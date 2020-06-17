@@ -1,0 +1,40 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                                         #
+#                                   Jak3's jHoppers                                       #
+#                                                                                         #
+# This plugin is apart of the J-Series for plugins. (jseries.store)                       #
+# If you ever need support -                                                              #
+# discord.jseries.store                                                                   #
+# I hope you all enjoy, I spent a lot of time on the plugin.                              #
+# The following plugins have added support:                                               #
+# ANY Factions/Skyblock/Claiming plugin, WildStacker, ShopGUIPlus, and SuperBoosters.     #
+# Ask me if you would like support for another plugin.                                    #
+# Note: config.yml is for editing the gameplay aspects.                                   #
+# Note: guis.yml is for editing the gui designs.                                          #
+# Note: messages.yml is for editing the messages.                                         #
+#                                                                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+#hoppers:
+#  world/5/-19:
+#    type: blockhere
+#    location:
+#      world: world
+#      x: x
+#      y: y
+#      z: z
+#    features: []
+#    members:
+#      UUID:
+#        isOwner: false
+#        canBreak: false
+#        canSell: false
+#        canWithdraw: false
+#        canInvite: false
+#        canRemove: false
+#        moneySold: 50.0
+#        itemsSold: 5
+#    items:
+#      MATERIAL: amt
+#    level: 5
+#    total: 5

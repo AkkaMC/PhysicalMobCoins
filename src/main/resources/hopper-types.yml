@@ -1,0 +1,14 @@
+types:
+  mob:
+    item:
+      material: "HOPPER"
+      name: "&e&lMob Hopper"
+      lore:
+        - "&7Example lore here."
+      enchanted: true
+    features: []
+    block: "BEACON"
+    hologram: "&e&lMOB HOPPER"
+    particle: "NO"
+    collection-items:
+      - "SAND"

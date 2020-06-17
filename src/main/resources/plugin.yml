@@ -1,0 +1,21 @@
+main:  store.jseries.jhoppers.JHoppers
+name: JHoppers
+version: ${project.version}
+depend:
+  - Vault
+softdepend:
+  - ShopGUIPlus
+  - SuperBoosters
+  - WildStacker
+  - MergedSpawner
+  - UltimateStacker
+  - HolographicDisplays
+description: ${project.description}
+author: Jak3
+api-version: '1.13'
+commands:
+  jhoppers:
+    description: Main jhoppers command.
+    aliases:
+      - jhopper
+      - jh
