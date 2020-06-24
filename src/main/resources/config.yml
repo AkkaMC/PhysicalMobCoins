@@ -32,6 +32,9 @@ hologram-update-time: 5
 #Set to 0 or below to disable
 auto-save-time: 300
 
+#The distance that the hologram will move upwards from the block (if enabled) (1.3 by default)
+hologram-height: 1.3
+
 permissions:
   #The permission to use jhoppers
   use-hopper: "jhoppers.use"

@@ -8,6 +8,10 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import store.jseries.jhoppers.JHoppers;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public enum Message {
 
@@ -19,6 +23,15 @@ public enum Message {
     INTERACT_HOPPER_OTHER("interact-hopper-other"),
     NO_HOPPER_PERMISSION("no-hopper-permission"),
     BREAK_SUCCESSFUL("break-successful"),
+    NO_ITEMS_LEFT("no-items-left"),
+    AUTO_SELL_ENABLED("auto-sell-enabled"),
+    ENTER_MEMBER("enter-member"),
+    UNKNOWN_PLAYER("unknown-player"),
+    ALREADY_MEMBER("already-member"),
+    ADDED_MEMBER("added-member"),
+    SOLD_ITEMS("sold-items"),
+    WITHDRAW_ITEMS("withdraw-items"),
+    FULL_INVENTORY("full-inventory"),
     ALREADY_IN_CHUNK("already-in-chunk"),
     HELP_MESSAGE("help-message", true);
 
@@ -46,9 +59,21 @@ public enum Message {
     }
 
     public String getMessage() {
-        if(this == PREFIX || this == SUFFIX)
-            return file.getString(configId);
-        return PREFIX.getMessage() + file.getString(configId) + SUFFIX.getMessage();
+        return getMessage(false).get(0);
     }
+
+    public List<String> getMessage(boolean multiline) {
+        if (!multiline) {
+            if (this == PREFIX || this == SUFFIX)
+                return Collections.singletonList(ChatColor.translateAlternateColorCodes('&', file.getString(configId)));
+            return Collections.singletonList(ChatColor.translateAlternateColorCodes('&', PREFIX.getMessage() + file.getString(configId) + SUFFIX.getMessage()));
+        } else {
+            List<String> message = new ArrayList<>();
+            for(String s : file.getStringList(configId))
+                message.add(ChatColor.translateAlternateColorCodes('&',s));
+            return message;
+        }
+    }
+
 
 }

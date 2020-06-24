@@ -26,12 +26,9 @@ public class JHopperManager extends JUtils {
 
     @Getter
     private Map<Chunk, JHopper> hopperChunks;
-    @Getter
-    private Map<Location, JHopper> hopperLocations;
 
     public JHopperManager() {
         hopperChunks = new HashMap<>();
-        hopperLocations = new HashMap<>();
         FileConfiguration config = YamlConfiguration.loadConfiguration(new File(JHoppers.getInstance().getDataFolder(), "storage.yml"));
         if(config.contains("hoppers")) {
             for(String key : config.getConfigurationSection("hoppers").getKeys(false)) {
@@ -72,9 +69,12 @@ public class JHopperManager extends JUtils {
     }
 
     public JHopper getJHopper(Location loc) {
-        if(!hopperLocations.containsKey(loc))
+        if(!hopperChunks.containsKey(loc.getChunk()))
             return null;
-        return hopperLocations.get(loc);
+        JHopper hopper = hopperChunks.get(loc.getChunk());
+        if(hopper.getLocation().equals(loc))
+            return hopper;
+        return null;
     }
 
     public Map<Location, XMaterial> getChangedHopperBlocks() {
@@ -111,6 +111,7 @@ public class JHopperManager extends JUtils {
                 loc.getBlock().setType(Objects.requireNonNull(type.getBlockType().parseMaterial()));
                 type.getPlaceParticle().display(loc);
                 HolographicDisplaysSupport.createHologram(hopper);
+                hopperChunks.put(loc.getChunk(),hopper);
             }
         });
 

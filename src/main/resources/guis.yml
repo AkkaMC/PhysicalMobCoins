@@ -24,6 +24,7 @@ hopper-menu:
     itemLore: []
     glowing: FALSE
   items:
+    #DONT CHANGE THIS LINE
     material: "%item_material%"
     slots:
       - 10
@@ -41,12 +42,14 @@ hopper-menu:
       - 30
       - 31
       - 32
-    itemName: "&9&l%item_type% &7[%item_amount%]"
+    itemName: "&9&l%item_material_name% &7[%item_amount%]"
     itemLore:
-      - "&7Worth: &2$&b%items_worth% &8[$%item_worth]x%item_amount%]"
-      - ""
+      - "&7Worth: &9$&b%items_worth% &8[$%item_worth%x%item_amount%]"
+      - "%autosell%"
       - "&eLeft click to sell all."
       - "&6Right click to withdraw all."
+    #PUT %autosell% on the line it will replace when autosell is enabled.
+    autusell: "&cAUTOSELL ENABLED"
   next-page:
     material: "STONE_BUTTON"
     slot: 24
@@ -67,6 +70,7 @@ hopper-menu:
 members-menu:
   name: "&8Hopper Menu"
   background:
+    material: "STAINED_GLASS_PANE"
     glass-color: "BLACK"
     itemName: " "
     itemLore:
@@ -89,15 +93,19 @@ members-menu:
       - 30
       - 31
       - 32
+    material: "HEAD"
+    head-url: "%player_head%"
     itemName: "&9&l%member_name%"
     itemLore:
-       - "&7Owner: %member_isOwner%"
+       - "&7Owner: &b%member_isOwner%"
+       - "&7Amount Sold: &c$%member_sold%"
+       - "&7Items Withdrawn: &e%member_withdraw%"
        - ""
        - "&eClick to edit member."
   back-button:
     slot: 25
     material: "BARRIER"
-    itemName: "&a&l< GO BACK"
+    itemName: "&c&l< GO BACK"
     itemLore:
       - ""
   next-page:
@@ -117,13 +125,6 @@ members-menu:
     itemName: "&9&lINVITE MEMBER"
     itemLore:
       - "&7Click to invite a member."
-  kick-all-members:
-    material: "HEAD"
-    head-url: "6f3e8b8f3d98e9322a5a5982efe022635db160a66697b1a11a6d2848a7e06e"
-    slot: 34
-    itemName: "&9&lKICK ALL MEMBERS"
-    itemLore:
-      - "&7Click to kick all members."
 member-edit-menu:
   name: "&8Hopper Menu"
   background:
@@ -143,7 +144,9 @@ member-edit-menu:
     head-url: "%player_head%"
     slot: 12
     itemName: "&9&l%member_name%"
-    itemLore: []
+    itemLore:
+      - "&7Amount Sold: &c$%member_sold%"
+      - "&7Items Withdrawn: &e%member_withdraw%"
     glowing: FALSE
   toggle-break:
     material: "GOLDEN_PICKAXE"
@@ -178,7 +181,7 @@ member-edit-menu:
       - ""
       - "&eClick to transfer ownership."
   kick-member:
-    material: "RED_DYE"
+    material: "REDSTONE"
     slot: 32
     itemName: "&9&lKICK MEMBER"
     itemLore:

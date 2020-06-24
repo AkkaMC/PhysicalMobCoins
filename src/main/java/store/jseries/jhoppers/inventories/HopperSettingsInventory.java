@@ -1,5 +1,6 @@
 package store.jseries.jhoppers.inventories;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -30,16 +31,29 @@ public class HopperSettingsInventory extends JInventory {
                 boolean has = type.getFeatures().contains(feature);
                 addButton(10 + i * 2, new ItemStackBuilder(has ? XMaterial.LIME_STAINED_GLASS_PANE : XMaterial.RED_STAINED_GLASS_PANE).displayName(has ? ("&a&l" + feature.getConfigId().toUpperCase() + " &7[Enabled]") : ("&c&l" + feature.getConfigId().toUpperCase() + " &7[Disabled]")).lore(has ? "&7Click to disable." : "&7Click to enable.").build())
                         .setClick(e -> {
+                            if (!feature.isActive()) {
+                                player.sendMessage(ChatColor.RED + "That feature is still in development.");
+                                return;
+                            }
                             type.toggleFeature(feature);
                             new HopperSettingsInventory().open(player, type);
+
                         });
                 addButton(19 + i * 2, new ItemStackBuilder(feature.getItem()).displayName("&" + feature.getColor() + "&l" + feature.getConfigId().toUpperCase() + (has ? " &7[Enabled]" : " &7[Disabled]")).lore(feature.getInfo(), "", (has ? "&eClick to disable." : "&eClick to enable.")).build())
                         .setClick(e -> {
+                            if (!feature.isActive()) {
+                                player.sendMessage(ChatColor.RED + "That feature is still in development.");
+                                return;
+                            }
                             type.toggleFeature(feature);
                             new HopperSettingsInventory().open(player, type);
                         });
                 addButton(28 + i * 2, new ItemStackBuilder(has ? XMaterial.LIME_STAINED_GLASS_PANE : XMaterial.RED_STAINED_GLASS_PANE).displayName(has ? ("&a&l" + feature.getConfigId().toUpperCase() + " &7[Enabled]") : ("&c&l" + feature.getConfigId().toUpperCase() + " &7[Disabled]")).lore(has ? "&7Click to disable." : "&7Click to enable.").build())
                         .setClick(e -> {
+                            if (!feature.isActive()) {
+                                player.sendMessage(ChatColor.RED + "That feature is still in development.");
+                                return;
+                            }
                             type.toggleFeature(feature);
                             new HopperSettingsInventory().open(player, type);
                         });
@@ -62,4 +76,5 @@ public class HopperSettingsInventory extends JInventory {
     public void onPlayerPersonalInventoryClick(InventoryClickEvent event) {
         event.setCancelled(true);
     }
+
 }

@@ -29,6 +29,7 @@ import com.mojang.authlib.properties.Property;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -66,9 +67,20 @@ public class SkullUtils {
     public static ItemStack getSkull(@Nonnull UUID id) {
         ItemStack head = XMaterial.PLAYER_HEAD.parseItem();
         SkullMeta meta = (SkullMeta) head.getItemMeta();
+        OfflinePlayer player = Bukkit.getOfflinePlayer(id);
+        if (XMaterial.isNewVersion()) meta.setOwningPlayer(player);
+        else meta.setOwner(player.getName());
 
-        if (XMaterial.isNewVersion()) meta.setOwningPlayer(Bukkit.getOfflinePlayer(id));
-        else meta.setOwner(id.toString());
+        head.setItemMeta(meta);
+        return head;
+    }
+    @Nonnull
+    public static ItemStack getSkull(@Nonnull String name) {
+        ItemStack head = XMaterial.PLAYER_HEAD.parseItem();
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        OfflinePlayer player = Bukkit.getOfflinePlayer(name);
+        if (XMaterial.isNewVersion()) meta.setOwningPlayer(player);
+        else meta.setOwner(name);
 
         head.setItemMeta(meta);
         return head;

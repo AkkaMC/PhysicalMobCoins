@@ -24,6 +24,14 @@ public class Member implements Serializable {
         itemsWithdrawn = 0;
     }
 
+    public Member(boolean owner) {
+        permissions = new ArrayList<>();
+        moneySold = 0;
+        itemsWithdrawn = 0;
+        if(owner)
+            permissions.add(HopperPermission.OWNER);
+    }
+
     public void sold(double amt) {
         moneySold += amt;
     }
