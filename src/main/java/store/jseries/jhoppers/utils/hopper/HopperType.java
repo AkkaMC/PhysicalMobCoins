@@ -107,7 +107,6 @@ public class HopperType {
 
     }
 
-
     public void setHologram(String text) {
         hologram = text;
         for (JHopper hopper : JHoppers.getInstance().getHopperManager().getHopperChunks().values()) {

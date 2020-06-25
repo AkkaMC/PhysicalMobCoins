@@ -2,6 +2,7 @@ package store.jseries.jhoppers.managers;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,19 +14,21 @@ import store.jseries.jhoppers.JHoppers;
 import store.jseries.jhoppers.utils.enums.HopperFeature;
 import store.jseries.jhoppers.utils.enums.PlaceParticle;
 import store.jseries.jhoppers.utils.hopper.HopperType;
+import store.jseries.jhoppers.utils.hopper.JHopper;
+import store.jseries.jhoppers.utils.players.Member;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.logging.Logger;
 
 public class HopperTypeManager extends JUtils {
 
     private Map<String, HopperType> types;
+    private boolean saving;
 
     public HopperTypeManager() {
         types = new HashMap<>();
+        saving = false;
         FileConfiguration config = YamlConfiguration.loadConfiguration(new File(JHoppers.getInstance().getDataFolder(), "hopper-types.yml"));
         if(config.contains("types")) {
             for(String key : config.getConfigurationSection("types").getKeys(false)) {
@@ -42,7 +45,7 @@ public class HopperTypeManager extends JUtils {
                     List<HopperFeature> features = new ArrayList<>();
                     if(config.getStringList("types." + key + ".features").size()>0) {
                         for (String s : config.getStringList("types." + key + ".features"))
-                            features.add(HopperFeature.valueOf(s.toUpperCase()));
+                            features.add(HopperFeature.fromString(s));
                     }
                     type.setFeatures(features);
                 }
@@ -61,6 +64,60 @@ public class HopperTypeManager extends JUtils {
                 if(config.contains("types." + key + ".hologram"))
                     type.setHologram(config.getString("types." + key + ".hologram"));
                 addType(key,type);
+            }
+        }
+        FileConfiguration configuration = JHoppers.getInstance().getConfig();
+        int autosave = configuration.contains("auto-save-time") ? configuration.getInt("auto-save-time") : 300;
+        if(autosave>0) {
+            Bukkit.getScheduler().runTaskTimer(JHoppers.getInstance(), new Runnable() {
+                @Override
+                public void run() {
+                    saveTypes();
+                    // Logger.getLogger("minecraft").info("JHOPPERS >> AUTOSAVING");
+                }
+            }, autosave*20, autosave*20);
+        }
+    }
+
+    public void disable() {
+        saveTypes();
+    }
+
+    private void saveTypes() {
+        if(!saving) {
+            saving = true;
+            File file = new File(JHoppers.getInstance().getDataFolder(), "hopper-types.yml");
+            FileConfiguration storage = YamlConfiguration.loadConfiguration(file);
+            storage.set("types", null);
+            if (types.size() > 0) {
+                for (HopperType type : types.values()) {
+                    String path = "types." + type.getId();
+                    storage.set(path + ".item.name", type.getItemName());
+                    storage.set(path + ".item.lore", type.getItemLore());
+                    storage.set(path + ".item.material", type.getType().name());
+                    storage.set(path + ".item.enchanted", type.isEnchanted());
+                    List<String> features = new ArrayList<>();
+                    type.getFeatures().forEach(f -> {
+                        features.add(f.getConfigId());
+                    });
+                    storage.set(path + ".features", features);
+                    storage.set(path + ".block", type.getBlockType().name());
+                    storage.set(path + ".hologram", type.getHologram());
+                    storage.set(path + ".particle", type.getPlaceParticle().getName());
+                    List<String> collection = new ArrayList<>();
+                    type.getPickupItems().forEach(item -> {
+                        collection.add(item.name());
+                    });
+                    storage.set(path + ".collection-items", collection);
+                }
+            }
+            try {
+                storage.save(file);
+            } catch (Exception ex) {
+                Logger.getLogger("minecraft").info("JHOPPERS > ERROR SAVING HOPPER-TYPES.YML");
+                ex.printStackTrace();
+            } finally {
+                saving = false;
             }
         }
     }

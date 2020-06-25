@@ -7,10 +7,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import store.jseries.framework.JFramework;
 import store.jseries.jhoppers.command.MainCommand;
-import store.jseries.jhoppers.listeners.BlockGrowReceiver;
-import store.jseries.jhoppers.listeners.BlockPlaceReceiver;
-import store.jseries.jhoppers.listeners.ItemSpawnReceiver;
-import store.jseries.jhoppers.listeners.PlayerInteractReceiver;
+import store.jseries.jhoppers.listeners.*;
 import store.jseries.jhoppers.managers.HopperTypeManager;
 import store.jseries.jhoppers.managers.JHopperManager;
 import store.jseries.jhoppers.managers.PermissionManager;
@@ -26,7 +23,7 @@ public class JHoppers extends JavaPlugin {
 
     private static final String[] FILES = {"guis.yml", "hopper-types.yml", "messages.yml", "prices.yml", "storage.yml"};
     private static final Listener[] LISTENERS = {new ItemSpawnReceiver(), new BlockPlaceReceiver(), new PlayerInteractReceiver()
-    , new BlockGrowReceiver()};
+    , new BlockGrowReceiver(), new BlockBreakReceiver()};
 
     @Getter
     private static JHoppers instance;
@@ -53,13 +50,14 @@ public class JHoppers extends JavaPlugin {
         priceManager = new PriceManager();
         hopperManager = new JHopperManager();
         hopperTypeManager = new HopperTypeManager();
-        permissionManager = new PermissionManager();
         if(getServer().getPluginManager().getPlugin("WildStacker") != null)
             WildStackerSupport.setEnabled(true);
         if(getServer().getPluginManager().getPlugin("UltimateStacker") != null)
             UltimateStackerSupport.setEnabled(true);
         if(getServer().getPluginManager().getPlugin("HolographicDisplays") != null)
             HolographicDisplaysSupport.setEnabled(getConfig());
+        hopperManager.placeHolograms();
+        permissionManager = new PermissionManager();
 
 
         if (!setupEconomy() ) {
@@ -76,6 +74,7 @@ public class JHoppers extends JavaPlugin {
     @Override
     public void onDisable() {
         hopperManager.disable();
+        hopperTypeManager.disable();
         JFramework.disable();
     }
     private boolean setupEconomy() {

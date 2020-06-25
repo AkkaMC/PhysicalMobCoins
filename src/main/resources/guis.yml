@@ -136,7 +136,7 @@ member-edit-menu:
   back-button:
     slot: 25
     material: "BARRIER"
-    itemName: "&a&l< GO BACK"
+    itemName: "&c&l< GO BACK"
     itemLore:
       - ""
   player-head:

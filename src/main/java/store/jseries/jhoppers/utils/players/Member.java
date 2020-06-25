@@ -55,10 +55,10 @@ public class Member implements Serializable {
 
     @Override
     public String serialize() {
-        String s = moneySold + "/" + itemsWithdrawn;
+        StringBuilder s = new StringBuilder(moneySold + "/" + itemsWithdrawn);
         for(HopperPermission permission : permissions)
-            s += "/" + permission.getName().toUpperCase();
-        return s;
+            s.append("/").append(permission.getName().toUpperCase());
+        return s.toString();
     }
 
     @Override
@@ -81,6 +81,11 @@ public class Member implements Serializable {
                 }
             }
         }
+    }
+
+    public Member deserializeToMember(String s) {
+        deserialize(s);
+        return this;
     }
 
 }

@@ -28,7 +28,7 @@ public class PlayerInteractReceiver implements Listener {
                 } else {
                     e.setCancelled(true);
                     if(!e.getPlayer().hasPermission(JHoppers.getInstance().getPermissionManager().getPermission(Permission.USE))) {
-                        e.getPlayer().sendMessage(Message.NO_HOPPER_PERMISSION.getMessage());
+                        e.getPlayer().sendMessage(Message.NO_PERMISSION.getMessage());
                         return;
                     }
                     if(!hopper.getMembers().containsKey(e.getPlayer().getUniqueId())) {

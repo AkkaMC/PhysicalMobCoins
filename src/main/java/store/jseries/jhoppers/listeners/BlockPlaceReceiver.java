@@ -24,6 +24,7 @@ public class BlockPlaceReceiver extends JUtils implements Listener {
                 }
                 JHopper hopper = new JHopper(type.getId(), e.getBlock().getLocation(), e.getPlayer().getUniqueId());
                 JHoppers.getInstance().getHopperManager().placeAtLocation(hopper, e.getPlayer());
+                removeItemsFromHand(e.getPlayer(),1);
             }
         }
     }

@@ -21,9 +21,10 @@ hopper-block-check: 10
 #A notification will be sent if this is true to ops every time the blocks are checked.
 send-block-check-notification: true
 block-check-notification:
-  - "&7*"
-  - "&7* CHECKING THE HOPPER BLOCKS"
-  - "&7*"
+  - "&7&o*"
+  - "&7&o* %checked% HOPPERS CHECKED"
+  - "&7&o* %replaced% BLOCKS WERE REPLACED"
+  - "&7&o*"
 
 #How often the holograms will update in seconds
 hologram-update-time: 5

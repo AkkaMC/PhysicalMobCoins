@@ -34,4 +34,12 @@ public enum HopperFeature {
         info.addAll(Arrays.asList(lore));
     }
 
+    public static HopperFeature fromString(String s) {
+        for(HopperFeature feature : HopperFeature.values()) {
+            if(feature.getConfigId().equalsIgnoreCase(s))
+                return feature;
+        }
+        return null;
+    }
+
 }

@@ -35,7 +35,7 @@ public class HolographicDisplaysSupport {
     }
 
     public static void createHologram(JHopper hopper, boolean override) {
-        if(HolographicDisplaysSupport.isEnabled() && (!override || (!holograms.containsKey(getId(hopper))))) {
+        if(HolographicDisplaysSupport.isEnabled() && (override || (!holograms.containsKey(getId(hopper))))) {
             com.gmail.filoghost.holographicdisplays.api.Hologram hologram = com.gmail.filoghost.holographicdisplays.api.HologramsAPI.createHologram(JHoppers.getInstance(), new Location(hopper.getLocation().getWorld(), hopper.getLocation().getBlockX()+0.5, hopper.getLocation().getBlockY()+hologram_height,hopper.getLocation().getBlockZ()+0.5));
             hologram.appendTextLine(ChatColor.translateAlternateColorCodes('&', JHoppers.getInstance().getHopperTypeManager().getType(hopper.getHopperType()).getHologram()));
             holograms.put(getId(hopper),hologram);
@@ -58,7 +58,7 @@ public class HolographicDisplaysSupport {
                 }
             } else {
                 if(!type.getHologram().equalsIgnoreCase(""))
-                    createHologram(hopper, true);
+                    createHologram(hopper);
             }
         }
     }
