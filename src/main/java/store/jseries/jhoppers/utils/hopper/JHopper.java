@@ -118,10 +118,11 @@ public class JHopper {
     }
 
     public void sellForOwner(XMaterial mat, Long amt) {
-        double price = JHoppers.getInstance().getPriceManager().getPrice(mat);
+        UUID uuid = getOwner();
+        double price = JHoppers.getInstance().getPriceManager().getPrice(Bukkit.getPlayer(uuid),mat);
         double worth = price * amt;
         items.put(mat,items.get(mat)-amt);
-        JHoppers.getEcon().depositPlayer(Bukkit.getOfflinePlayer(getOwner()),worth);
+        JHoppers.getEcon().depositPlayer(Bukkit.getOfflinePlayer(uuid),worth);
     }
 
     public String getId() {

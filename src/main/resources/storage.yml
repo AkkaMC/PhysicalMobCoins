@@ -14,27 +14,3 @@
 # Note: messages.yml is for editing the messages.                                         #
 #                                                                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-#hoppers:
-#  world/5/-19:
-#    type: blockhere
-#    location:
-#      world: world
-#      x: x
-#      y: y
-#      z: z
-#    features: []
-#    members:
-#      UUID:
-#        isOwner: false
-#        canBreak: false
-#        canSell: false
-#        canWithdraw: false
-#        canInvite: false
-#        canRemove: false
-#        moneySold: 50.0
-#        itemsSold: 5
-#    items:
-#      MATERIAL: amt
-#    level: 5
-#    total: 5

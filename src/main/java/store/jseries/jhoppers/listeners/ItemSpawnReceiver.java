@@ -1,6 +1,5 @@
 package store.jseries.jhoppers.listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,16 +15,16 @@ public class ItemSpawnReceiver implements Listener {
     @EventHandler
     public void onItemSpawn(ItemSpawnEvent e) {
         JHoppers jh = JHoppers.getInstance();
-        if(jh.getHopperManager().getHopperChunks().containsKey(e.getLocation().getChunk()) && e.getEntity().getItemStack().getType() != Material.AIR) {
-            JHopper hopper = jh.getHopperManager().getHopperChunks().get(e.getLocation().getChunk());
+        JHopper hopper = jh.getHopperManager().getJHopper(e.getLocation().getChunk());
+        if (hopper != null && e.getEntity().getItemStack().getType() != Material.AIR) {
             XMaterial mat = XMaterial.matchXMaterial(e.getEntity().getItemStack());
-            if(jh.getHopperTypeManager().getType(hopper.getHopperType()).getPickupItems().contains(mat)) {
+            if (jh.getHopperTypeManager().getType(hopper.getHopperType()).getPickupItems().contains(mat)) {
                 int amt = e.getEntity().getItemStack().getAmount();
-                if(UltimateStackerSupport.isEnabled())
+                if (UltimateStackerSupport.isEnabled())
                     amt = UltimateStackerSupport.getItemAmount(e.getEntity());
-                if(WildStackerSupport.isEnabled())
+                if (WildStackerSupport.isEnabled())
                     amt = WildStackerSupport.getItemAmount(e.getEntity());
-                hopper.addItem(mat,amt);
+                hopper.addItem(mat, amt);
                 e.setCancelled(true);
             }
         }

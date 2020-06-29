@@ -2,12 +2,16 @@ package store.jseries.jhoppers.managers;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import store.jseries.framework.xseries.XMaterial;
 import store.jseries.jhoppers.JHoppers;
+import store.jseries.jhoppers.supports.ShopGUIPlusSupport;
+import store.jseries.jhoppers.supports.SuperBoostersSupport;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class PriceManager {
 
@@ -16,24 +20,33 @@ public class PriceManager {
 
     public PriceManager() {
         prices = new HashMap<>();
-        FileConfiguration config = YamlConfiguration.loadConfiguration(new File(JHoppers.getInstance().getDataFolder(),"prices.yml"));
+        File pricesFile = new File(JHoppers.getInstance().getDataFolder(), "prices.yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(pricesFile);
         defaultPrice = config.contains("default-price") ? config.getDouble("default-price") : 5.0;
-        if(config.contains("prices")) {
-            for(String key : config.getConfigurationSection("prices").getKeys(false)) {
-                try {
-                    XMaterial material = XMaterial.getXMaterialIfDuplicated(key.toUpperCase());
-                    double price = config.getDouble("prices." + key);
-                    prices.put(material,price);
-                } catch (Exception ignored) {}
+        for (XMaterial mat : XMaterial.values()) {
+            if (config.contains("prices." + mat.name())) {
+                prices.put(mat, config.getDouble("prices." + mat.name()));
+            } else {
+                prices.put(mat, defaultPrice);
+                config.set("prices." + mat.name(), defaultPrice);
             }
+        }
+        try {
+            config.save(pricesFile);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
-    public double getPrice(XMaterial mat) {
+    public double getPrice(Player player, XMaterial mat) {
+        double price = ShopGUIPlusSupport.getItemPrice(player,mat);
+        double booster = SuperBoostersSupport.getBooster(player.getUniqueId());
+        if(price != -1)
+            return price * booster;
         if(prices.containsKey(mat))
-            return prices.get(mat);
+            return prices.get(mat) * booster;
         prices.put(mat,defaultPrice);
-        return defaultPrice;
+        return defaultPrice * booster;
     }
 
     public void setPrice(XMaterial mat, double amt) {

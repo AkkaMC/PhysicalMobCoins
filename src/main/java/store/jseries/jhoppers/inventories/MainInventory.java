@@ -56,11 +56,11 @@ public class MainInventory extends JInventory {
                 });
         addButton(34, new ItemStackBuilder(SkullUtils.getSkullFromUrl(Skin.MONEY.getUrl())).displayName("&9&lCONFIGURE PRICES").lore("&7Click to manage the prices.").build())
                 .setClick(e -> {
-                    message(e.getWhoClicked(), "&7In order to configure prices - ");
-                    message(e.getWhoClicked(), "&b&l1. &7Turn the server off.");
-                    message(e.getWhoClicked(), "&b&l2. &7Manage any items in prices.yml.");
-                    message(e.getWhoClicked(), "&b&l3. &7Save the file.");
-                    message(e.getWhoClicked(), "&b&l4. &7You're good to go!");
+                    message(e.getWhoClicked(), "&8In order to configure prices - ");
+                    message(e.getWhoClicked(), "&9&l1. &7Turn the server off.");
+                    message(e.getWhoClicked(), "&9&l2. &7Manage any items in prices.yml.");
+                    message(e.getWhoClicked(), "&9&l3. &7Save the file.");
+                    message(e.getWhoClicked(), "&9&l4. &7You're good to go!");
                 });
         if (page > 1)
             addButton(18, new ItemStackBuilder(XMaterial.STONE_BUTTON).displayName("&a&l< PREVIOUS PAGE").build())

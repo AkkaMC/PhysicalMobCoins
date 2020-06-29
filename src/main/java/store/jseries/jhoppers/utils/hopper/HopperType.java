@@ -3,6 +3,7 @@ package store.jseries.jhoppers.utils.hopper;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -14,10 +15,7 @@ import store.jseries.jhoppers.supports.HolographicDisplaysSupport;
 import store.jseries.jhoppers.utils.enums.HopperFeature;
 import store.jseries.jhoppers.utils.enums.PlaceParticle;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class HopperType {
 
@@ -55,7 +53,7 @@ public class HopperType {
         this.id = name.toLowerCase();
         type = XMaterial.HOPPER;
         itemName = "&e&l" + name.toUpperCase() + " HOPPER";
-        itemLore = Collections.singletonList("&7Place to active.");
+        itemLore = Collections.singletonList("&7Place to activate.");
         enchanted = false;
         features = new ArrayList<>();
         blockType = XMaterial.HOPPER;
@@ -113,5 +111,17 @@ public class HopperType {
             if (id.equalsIgnoreCase(hopper.getHopperType()))
                 HolographicDisplaysSupport.updateHologram(hopper);
         }
+    }
+
+    public void updateHopperBlocks() {
+        Bukkit.getScheduler().runTask(JHoppers.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                for(JHopper hopper : JHoppers.getInstance().getHopperManager().getHopperChunks().values()) {
+                    if(hopper.getHopperType().equalsIgnoreCase(id))
+                        hopper.getLocation().getBlock().setType(Objects.requireNonNull(blockType.parseMaterial()));
+                }
+            }
+        });
     }
 }

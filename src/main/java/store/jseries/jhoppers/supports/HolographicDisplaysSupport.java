@@ -27,15 +27,10 @@ public class HolographicDisplaysSupport {
     }
 
     public static void createHologram(JHopper hopper) {
-        if(HolographicDisplaysSupport.isEnabled() && !holograms.containsKey(getId(hopper))) {
-            com.gmail.filoghost.holographicdisplays.api.Hologram hologram = com.gmail.filoghost.holographicdisplays.api.HologramsAPI.createHologram(JHoppers.getInstance(), new Location(hopper.getLocation().getWorld(), hopper.getLocation().getBlockX()+0.5, hopper.getLocation().getBlockY()+hologram_height,hopper.getLocation().getBlockZ()+0.5));
-            hologram.appendTextLine(ChatColor.translateAlternateColorCodes('&', JHoppers.getInstance().getHopperTypeManager().getType(hopper.getHopperType()).getHologram()));
-            holograms.put(getId(hopper),hologram);
-        }
-    }
-
-    public static void createHologram(JHopper hopper, boolean override) {
-        if(HolographicDisplaysSupport.isEnabled() && (override || (!holograms.containsKey(getId(hopper))))) {
+        if(HolographicDisplaysSupport.isEnabled()) {
+            if(holograms.containsKey(getId(hopper)))
+                holograms.get(getId(hopper)).delete();
+            holograms.remove(getId(hopper));
             com.gmail.filoghost.holographicdisplays.api.Hologram hologram = com.gmail.filoghost.holographicdisplays.api.HologramsAPI.createHologram(JHoppers.getInstance(), new Location(hopper.getLocation().getWorld(), hopper.getLocation().getBlockX()+0.5, hopper.getLocation().getBlockY()+hologram_height,hopper.getLocation().getBlockZ()+0.5));
             hologram.appendTextLine(ChatColor.translateAlternateColorCodes('&', JHoppers.getInstance().getHopperTypeManager().getType(hopper.getHopperType()).getHologram()));
             holograms.put(getId(hopper),hologram);
@@ -45,21 +40,10 @@ public class HolographicDisplaysSupport {
     public static void updateHologram(JHopper hopper) {
         if(HolographicDisplaysSupport.isEnabled()) {
             HopperType type = JHoppers.getInstance().getHopperTypeManager().getType(hopper.getHopperType());
-            if (holograms.containsKey(getId(hopper))) {
-                com.gmail.filoghost.holographicdisplays.api.Hologram hologram = holograms.get(getId(hopper));
-                if (hologram == null) {
-                    if(!type.getHologram().equalsIgnoreCase(""))
-                        createHologram(hopper, true);
-                    else
-                        holograms.remove(getId(hopper));
-                } else {
-                    hologram.clearLines();
-                    hologram.appendTextLine(ChatColor.translateAlternateColorCodes('&', JHoppers.getInstance().getHopperTypeManager().getType(hopper.getHopperType()).getHologram()));
-                }
-            } else {
-                if(!type.getHologram().equalsIgnoreCase(""))
-                    createHologram(hopper);
-            }
+            if(!type.getHologram().equalsIgnoreCase(""))
+                createHologram(hopper);
+            else
+                removeHologram(hopper);
         }
     }
 
@@ -68,6 +52,10 @@ public class HolographicDisplaysSupport {
             if (holograms.containsKey(getId(hopper))) {
                 holograms.get(getId(hopper)).delete();
                 holograms.remove(getId(hopper));
+                if (holograms.containsKey(getId(hopper))) {
+                    holograms.get(getId(hopper)).delete();
+                    holograms.remove(getId(hopper));
+                }
             }
         }
     }

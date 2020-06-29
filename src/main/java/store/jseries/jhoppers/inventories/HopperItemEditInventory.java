@@ -1,5 +1,6 @@
 package store.jseries.jhoppers.inventories;
 
+import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -13,7 +14,9 @@ import store.jseries.framework.utils.inventory.JInventoryHolder;
 import store.jseries.framework.xseries.XMaterial;
 import store.jseries.jhoppers.utils.hopper.HopperType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class HopperItemEditInventory extends JInventory {
     @Override
@@ -41,7 +44,22 @@ public class HopperItemEditInventory extends JInventory {
                     ChatResponse.removeResponse(event.getPlayer().getUniqueId());
                 });
             });
-            addButton(30, new ItemStackBuilder(XMaterial.PAPER).displayName("&9&lITEM LORE").lore().build());
+            addButton(30, new ItemStackBuilder(XMaterial.PAPER).displayName("&9&lITEM LORE").lore().build())
+                    .setClick(e -> {
+                        e.getWhoClicked().closeInventory();
+                        message(player, "&7Type the first line of the hopper item's lore. Enter 'exit' to save and return to menu.");
+                        final List<String> lore = new ArrayList<>();
+                        ChatResponse.addResponse(e.getWhoClicked().getUniqueId(), event -> {
+                            if(event.getMessage().equalsIgnoreCase("exit")) {
+                                type.setItemLore(lore);
+                                new HopperItemEditInventory().open(player,type);
+                                ChatResponse.removeResponse(event.getPlayer().getUniqueId());
+                            } else {
+                                lore.add(event.getMessage());
+                                message(player, "&7Type the next line of the hopper item's lore. Enter 'exit' to save and return to menu.");
+                            }
+                        });
+                    });
             addButton(31, type.isEnchanted() ? new ItemStackBuilder(XMaterial.ENCHANTED_BOOK).displayName("&9&lTOGGLE GLOWING").enchant(Enchantment.DURABILITY,0).addItemFlag(ItemFlag.HIDE_ENCHANTS,ItemFlag.HIDE_ATTRIBUTES).lore("&7Click to remove glowing.").build() : new ItemStackBuilder(XMaterial.BOOK).displayName("&9&lTOGGLE GLOWING").addItemFlag(ItemFlag.HIDE_ENCHANTS,ItemFlag.HIDE_ATTRIBUTES).lore("&7Click to enable glowing.").build())
             .setClick(e -> {
                 type.toggleEnchanted();
@@ -71,6 +89,7 @@ public class HopperItemEditInventory extends JInventory {
                 HopperType type = (HopperType) ((JInventoryHolder)e.getInventory().getHolder()).getData(0);
                 if (e.getClick() == ClickType.RIGHT) {
                     type.setBlockType(mat);
+                    type.updateHopperBlocks();
                     new HopperItemEditInventory().open((Player)e.getWhoClicked(), type);
                 } else if (e.getClick() == ClickType.LEFT) {
                     type.setType(mat);

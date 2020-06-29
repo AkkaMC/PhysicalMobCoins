@@ -33,6 +33,7 @@ public enum Message {
     WITHDRAW_ITEMS("withdraw-items"),
     FULL_INVENTORY("full-inventory"),
     ALREADY_IN_CHUNK("already-in-chunk"),
+    DELETED_TYPE("deleted-type"),
     HELP_MESSAGE("help-message", true);
 
     private String configId;
@@ -74,6 +75,7 @@ public enum Message {
             return message;
         }
     }
+
 
 
 }

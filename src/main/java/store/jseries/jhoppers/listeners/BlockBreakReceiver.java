@@ -24,7 +24,6 @@ public class BlockBreakReceiver implements Listener {
                     e.getPlayer().sendMessage(Message.NO_HOPPER_PERMISSION.getMessage());
                     return;
                 }
-                e.getBlock().setType(Material.AIR);
                 e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), JHoppers.getInstance().getHopperTypeManager().getType(hopper.getHopperType()).getItem());
                 JHoppers.getInstance().getHopperManager().removeHopper(hopper);
             } else {

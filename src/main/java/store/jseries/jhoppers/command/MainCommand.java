@@ -17,12 +17,12 @@ public class MainCommand implements CommandExecutor {
            else {
                if (args[0].equalsIgnoreCase("give"))
                    GiveCommand.handle(sender, args);
-               else if (args[0].equalsIgnoreCase("create") || args[0].equalsIgnoreCase("newtype"))
+               else if (args[0].equalsIgnoreCase("create") || args[0].equalsIgnoreCase("new"))
                    CreateCommand.handle(sender, args);
-               else if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("del"))
+               else if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("del"))
                    DeleteCommand.handle(sender, args);
-               // else
-                   // Message.HELP_MESSAGE
+               else
+                   HelpCommand.handle(sender, args);
            }
         return true;
     }

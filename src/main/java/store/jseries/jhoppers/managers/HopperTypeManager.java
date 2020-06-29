@@ -149,4 +149,18 @@ public class HopperTypeManager extends JUtils {
         return null;
     }
 
+    public HopperType createType(String name) {
+        HopperType type = new HopperType(name);
+        types.put(name.toLowerCase(), type);
+        return type;
+    }
+
+    public void deleteType(HopperType type) {
+        for(JHopper hopper : JHoppers.getInstance().getHopperManager().getHopperChunks().values()) {
+            if(hopper.getId().equalsIgnoreCase(type.getId()))
+                JHoppers.getInstance().getHopperManager().removeHopper(hopper);
+        }
+        types.remove(type.getId().toLowerCase());
+    }
+
 }

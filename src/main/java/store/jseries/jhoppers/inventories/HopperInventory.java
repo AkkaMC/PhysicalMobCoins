@@ -58,7 +58,7 @@ public class HopperInventory extends JInventory {
                     XMaterial mat = items.get(pos);
                     String typeStr = mat.name().replaceAll("_", "");
                     long itemAmount = itemAmounts.containsKey(mat) ? itemAmounts.get(mat) : 0;
-                    final double worth = JHoppers.getInstance().getPriceManager().getPrice(mat);
+                    final double worth = JHoppers.getInstance().getPriceManager().getPrice(player, mat);
                     double total = worth * itemAmount;
                     ItemStackBuilder builder = new ItemStackBuilder(ConfigUtil.fromConfigSection(config, path + ".items", new Placeholder("%item_material%", mat.name())
                     , new Placeholder("%item_amount%",itemAmount + ""), new Placeholder("%item_worth%", worth + ""), new Placeholder("%items_worth%", total + ""), new Placeholder("%item_material_name%", typeStr)));
@@ -92,7 +92,7 @@ public class HopperInventory extends JInventory {
                                     }
                                     long amt = jhopper.getItems().get(mat);
                                     jhopper.removeAllItem(mat);
-                                    double price = amt * JHoppers.getInstance().getPriceManager().getPrice(mat);
+                                    double price = amt * JHoppers.getInstance().getPriceManager().getPrice((Player) e.getWhoClicked(), mat);
                                     jhopper.soldItems(e.getWhoClicked().getUniqueId(), price);
                                     JHoppers.getEcon().depositPlayer(Bukkit.getOfflinePlayer(e.getWhoClicked().getUniqueId()), price);
                                     e.getWhoClicked().sendMessage(Message.SOLD_ITEMS.getMessage().replaceAll("%price%", price + ""));

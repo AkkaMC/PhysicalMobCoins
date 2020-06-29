@@ -1,5 +1,6 @@
 package store.jseries.jhoppers.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Hopper;
 import org.bukkit.event.EventHandler;
@@ -12,8 +13,9 @@ import store.jseries.jhoppers.utils.enums.HopperPermission;
 import store.jseries.jhoppers.utils.enums.Message;
 import store.jseries.jhoppers.utils.enums.Permission;
 import store.jseries.jhoppers.utils.hopper.JHopper;
+import store.jseries.framework.utils.JUtils;
 
-public class PlayerInteractReceiver implements Listener {
+public class PlayerInteractReceiver extends JUtils implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e) {

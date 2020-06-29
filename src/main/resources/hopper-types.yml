@@ -1,14 +1,66 @@
 types:
   mob:
     item:
-      material: "HOPPER"
-      name: "&e&lMob Hopper"
+      name: '&2&l* &a&lMOB HOPPER &2&l*'
       lore:
-        - "&7Example lore here."
+        - '&7Place to activate.'
+      material: HOPPER
       enchanted: true
     features: []
-    block: "BEACON"
-    hologram: "&e&lMOB HOPPER"
-    particle: "NO"
+    block: HOPPER
+    hologram: '&2&l* &a&lMOB HOPPER &2&l*'
+    particle: REDSTONE
     collection-items:
-      - "SAND"
+      - GUNPOWDER
+      - BONE
+      - ROTTEN_FLESH
+      - BLAZE_ROD
+      - LEATHER
+      - ENDER_PEARL
+      - STRING
+  void:
+    item:
+      name: '&d&l* &5&lVOID CHEST &d&l*'
+      lore:
+        - '&7Place to activate.'
+      material: ENDER_CHEST
+      enchanted: true
+    features: []
+    block: ENDER_CHEST
+    hologram: '&e&lVOID HOPPER'
+    particle: 'NO'
+    collection-items:
+      - WHEAT
+      - POTATO
+      - PUMPKIN
+      - CARROT
+      - SUGAR_CANE
+      - MELON
+      - CACTUS
+      - GUNPOWDER
+      - BONE
+      - ROTTEN_FLESH
+      - BLAZE_ROD
+      - LEATHER
+      - ENDER_PEARL
+      - STRING
+  crop:
+    item:
+      name: '&6&l* &e&lCROP HOPPER &6&l*'
+      lore:
+        - '&7Place to activate.'
+      material: HOPPER
+      enchanted: true
+    features:
+      - auto-harvest
+    block: HOPPER
+    hologram: '&6&l* &e&lCROP HOPPER &6&l*'
+    particle: 'NO'
+    collection-items:
+      - WHEAT
+      - POTATO
+      - PUMPKIN
+      - CARROT
+      - SUGAR_CANE
+      - MELON
+      - CACTUS

@@ -31,7 +31,7 @@ public class ItemsEditInventory extends JInventory {
             createInventory("items", "&8JHoppers Menu", 45);
             HopperType type = (HopperType) args[0];
             int page = (int) args[1];
-            for (int i : Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 17, 18, 24, 26, 27, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44))
+            for (int i : Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 17, 18, 24, 26, 27, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44))
                 addItem(i, new ItemStackBuilder(XMaterial.BLACK_STAINED_GLASS_PANE).displayName(" ").build());
             if(page>1)
                 addButton(18, new ItemStackBuilder(XMaterial.STONE_BUTTON).displayName("&a&l< PREVIOUS PAGE").build())
@@ -44,7 +44,7 @@ public class ItemsEditInventory extends JInventory {
                         .setClick(e -> {
                             new ItemsEditInventory().open(player,type,page+1);
                         });
-            addButton(25, new ItemStackBuilder(XMaterial.BARRIER).displayName("&c&l< GO BACK").lore("&4NOTE: &cYour changes will NOT be saved.").build())
+            addButton(25, new ItemStackBuilder(XMaterial.BARRIER).displayName("&c&l< GO BACK").build())
                     .setClick(e -> {
                         new HopperEditInventory().open(player, type);
                     });

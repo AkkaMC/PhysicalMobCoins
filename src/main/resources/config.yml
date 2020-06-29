@@ -26,6 +26,8 @@ block-check-notification:
   - "&7&o* %replaced% BLOCKS WERE REPLACED"
   - "&7&o*"
 
+#NOTE - ATUO BLOCK CHECK WILL BE ADDED SOON
+
 #How often the holograms will update in seconds
 hologram-update-time: 5
 

@@ -32,7 +32,7 @@ public class GiveCommand extends JUtils {
             return;
         }
         if(args.length == 2) {
-            sender.sendMessage(ChatColor.GREEN + "You gave yourself a " + args[0] + " hopper.");
+            sender.sendMessage(ChatColor.GREEN + "You gave yourself a " + args[1] + " hopper.");
             ((Player) sender).getInventory().addItem(type.getItem());
             return;
         }

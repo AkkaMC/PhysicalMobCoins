@@ -13,6 +13,7 @@ import store.jseries.jhoppers.managers.JHopperManager;
 import store.jseries.jhoppers.managers.PermissionManager;
 import store.jseries.jhoppers.managers.PriceManager;
 import store.jseries.jhoppers.supports.HolographicDisplaysSupport;
+import store.jseries.jhoppers.supports.ShopGUIPlusSupport;
 import store.jseries.jhoppers.supports.UltimateStackerSupport;
 import store.jseries.jhoppers.supports.WildStackerSupport;
 
@@ -56,6 +57,8 @@ public class JHoppers extends JavaPlugin {
             UltimateStackerSupport.setEnabled(true);
         if(getServer().getPluginManager().getPlugin("HolographicDisplays") != null)
             HolographicDisplaysSupport.setEnabled(getConfig());
+        if(getServer().getPluginManager().getPlugin("ShopGUIPlus") != null)
+            ShopGUIPlusSupport.setEnabled(true);
         hopperManager.placeHolograms();
         permissionManager = new PermissionManager();
 
