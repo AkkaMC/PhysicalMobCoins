@@ -1,21 +1,14 @@
-main:  store.jseries.jhoppers.JHoppers
-name: JHoppers
+main:  store.jseries.pmc.PhysicalMobCoins
+name: PhysicalMobCoins
 version: ${project.version}
 depend:
-  - Vault
-softdepend:
-  - ShopGUIPlus
-  - SuperBoosters
-  - WildStacker
-  - MergedSpawner
-  - UltimateStacker
-  - HolographicDisplays
+  - SuperMobCoins
 description: ${project.description}
 author: Jak3
 api-version: '1.13'
 commands:
-  jhoppers:
-    description: Main jhoppers command.
+  pmc:
+    description: Main PMC Command.
     aliases:
-      - jhopper
-      - jh
+      - physicalmobcoins
+      - physicalmobcoin

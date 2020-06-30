@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>store.jseries.jhoppers</groupId>
-  <artifactId>JHoppers</artifactId>
-  <version>0.1</version>
-  <description>The future of hoppers.</description>
+  <groupId>store.jseries.pmc</groupId>
+  <artifactId>PhysicalMobCoins</artifactId>
+  <version>1.0</version>
+  <description>MobCoins to the next level.</description>
   <build>
     <resources>
       <resource>
@@ -29,7 +29,7 @@
           <relocations>
             <relocation>
               <pattern>de.tr7zw.changeme.nbtapi</pattern>
-              <shadedPattern>store.jseries.jhoppers.api</shadedPattern>
+              <shadedPattern>store.jseries.pmc.api</shadedPattern>
             </relocation>
           </relocations>
         </configuration>
@@ -91,33 +91,9 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>com.github.MilkBowl</groupId>
-      <artifactId>VaultAPI</artifactId>
-      <version>1.7</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>bukkit</artifactId>
-          <groupId>org.bukkit</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.github.OmerBenGera</groupId>
-      <artifactId>WildStackerAPI</artifactId>
-      <version>master</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.12</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.gmail.filoghost.holographicdisplays</groupId>
-      <artifactId>holographicdisplays-api</artifactId>
-      <version>2.4.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -199,24 +175,10 @@
     </dependency>
     <dependency>
       <groupId>me.swanis</groupId>
-      <artifactId>boosters-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <artifactId>mobcoins-api</artifactId>
+      <version>1.1-SNAPSHOT</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/deps/boosters-api-1.0-SNAPSHOT.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>com.gc</groupId>
-      <artifactId>AdvancedSpawners</artifactId>
-      <version>12.4.1</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/deps/AdvancedSpawners.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>com.songoda</groupId>
-      <artifactId>UltimateStacker</artifactId>
-      <version>1.11.3</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/deps/ultimatestacker-1.11.3.jar</systemPath>
+      <systemPath>${project.basedir}/deps/mobcoins-api-1.1-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>

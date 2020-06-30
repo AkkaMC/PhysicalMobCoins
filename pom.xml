@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>store.jseries.jhoppers</groupId>
-    <artifactId>JHoppers</artifactId>
-    <description>The future of hoppers.</description>
-    <version>0.1</version>
+    <groupId>store.jseries.pmc</groupId>
+    <artifactId>PhysicalMobCoins</artifactId>
+    <description>MobCoins to the next level.</description>
+    <version>1.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -39,7 +39,7 @@
                     <relocations>
                         <relocation>
                             <pattern>de.tr7zw.changeme.nbtapi</pattern>
-                            <shadedPattern>store.jseries.jhoppers.api</shadedPattern>
+                            <shadedPattern>store.jseries.pmc.api</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -175,33 +175,6 @@
         </dependency>
         <!--SPIGOT DEPENDENCY-->
 
-        <!--VAULT DEPENDENCY-->
-        <dependency>
-            <groupId>com.github.MilkBowl</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--VAULT DEPENDENCY-->
-
-        <!--SHOPGUIPLUS DEPENDENCY-->
-        <dependency>
-            <groupId>com.github.brcdev-minecraft</groupId>
-            <artifactId>shopgui-api</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        <!--SHOPGUIPLUS DEPENDENCY-->
-
-        <!--SUPERBOOSTERS DEPENDENCY-->
-        <dependency>
-            <groupId>me.swanis</groupId>
-            <artifactId>boosters-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/deps/boosters-api-1.0-SNAPSHOT.jar</systemPath>
-        </dependency>
-        <!--SUPERBOOSTERS DEPENDENCY-->
-
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -209,34 +182,14 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--WILDSTACKER DEPENDENCY-->
-        <dependency>
-            <groupId>com.github.OmerBenGera</groupId>
-            <artifactId>WildStackerAPI</artifactId>
-            <version>master</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--WILDSTACKER DEPENDENCY-->
 
-        <!--ADVANCEDSPAWNERS DEPENDENCY-->
         <dependency>
-            <groupId>com.gc</groupId>
-            <artifactId>AdvancedSpawners</artifactId>
-            <version>12.4.1</version>
+            <groupId>me.swanis</groupId>
+            <artifactId>mobcoins-api</artifactId>
+            <version>1.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/deps/AdvancedSpawners.jar</systemPath>
+            <systemPath>${project.basedir}/deps/mobcoins-api-1.1-SNAPSHOT.jar</systemPath>
         </dependency>
-        <!--ADVANCEDSPAWNERS DEPENDENCY-->
-
-        <!--ULTIMATESTACKER DEPENDENCY-->
-        <dependency>
-            <groupId>com.songoda</groupId>
-            <artifactId>UltimateStacker</artifactId>
-            <version>1.11.3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/deps/ultimatestacker-1.11.3.jar</systemPath>
-        </dependency>
-        <!--ULTIMATESTACKER DEPENDENCY-->
 
         <!--LOMBOK DEPENDENCY-->
         <dependency>
@@ -247,15 +200,6 @@
         </dependency>
         <!--LOMBOK DEPENDENCY-->
 
-
-        <!--HOLOGRAPHICDISPLAYS DEPENDENCY-->
-        <dependency>
-            <groupId>com.gmail.filoghost.holographicdisplays</groupId>
-            <artifactId>holographicdisplays-api</artifactId>
-            <version>2.4.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--HOLOGRAPHICDISPLAYS DEPENDENCY-->
         <dependency>
             <groupId>de.tr7zw</groupId>
             <artifactId>item-nbt-api</artifactId>

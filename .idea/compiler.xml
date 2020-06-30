@@ -8,8 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="PluginTemplate" />
-        <module name="JHoppers" />
+        <module name="PhysicalMobCoins" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JHoppers" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

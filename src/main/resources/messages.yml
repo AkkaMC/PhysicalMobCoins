@@ -1,45 +1,13 @@
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#                                                                                         #
-#                                   Jak3's jHoppers                                       #
-#                                                                                         #
-# This plugin is apart of the J-Series for plugins. (jseries.store)                       #
-# If you ever need support -                                                              #
-# discord.jseries.store                                                                   #
-# I hope you all enjoy, I spent a lot of time on the plugin.                              #
-# The following plugins have added support:                                               #
-# ANY Factions/Skyblock/Claiming plugin, WildStacker, ShopGUIPlus, and SuperBoosters.     #
-# Ask me if you would like support for another plugin.                                    #
-# Note: config.yml is for editing the gameplay aspects.                                   #
-# Note: guis.yml is for editing the gui designs.                                          #
-#                                                                                         #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 prefix: ""
 suffix: ""
 
 no-permission: "&cNo permission."
-
-open-hopper: "&aOpening hopper menu."
-close-hopper: "&cClosing hopper menu."
-interact-hopper-other: "&cYou are not a member of this hopper."
-no-hopper-permission: "&cThe owner has not given you permission to do that."
-break-successful: "&aYou successfully broke the hopper!"
-already-in-chunk: "&cThere is already a hopper in this chunk."
-no-items-left: "&cThis hopper has none of that item left."
-sold-items: "&aYou sold $%price% worth of items!"
-enter-member: "&7Enter the player you wish to invites name below. Use 'exit' to cancel."
-unknown-player: "&cUnknown player. Please re-enter."
-already-member: "&cThat player is already a member. Please re-enter."
-added-member: "&aThat player was added to the hopper."
-withdraw-items: "&aYou withdrew %amount% items."
-full-inventory: "&cYour inventory is full!"
-auto-sell-enabled: "&cThis hopper has autosell enabled."
-deleted-type: "&aThat hopper type was successfully deleted."
+pickup-coins: "&eYou picked up &6%amount% &emobcoin(s)."
 help-message:
-  - "&8&l&m--------------------[&B&lJHoppers&8&l&m]--------------------"
-  - "&9/jh &8- &7Main gui."
-  - "&9/jh help &8- &7JHoppers help menu."
-  - "&9/jh give (type) (player) (amount) &8- &7Give a player a hopper."
-  - "&9/jh create (type) &8- &7Create a new hopper type."
-  - "&9/jh delete (type) &8- &7Deletes a hopper type."
-  - "&8&l&m--------------------[&B&lJHoppers&8&l&m]--------------------"
+  - "&8&l&m--------------------[&6&lPhysical&e&lMobCoins&8&l&m]--------------------"
+  - "&e/pmc &8- &7Main gui."
+  - "&e/pmc enable/disable &8- &7Enable or disable the plugin."
+  - "&e/pmc setitem (item_name) &8- &7Set the mobcoin item."
+  - "&e/pmc setsound (sound_name) &8- &7Set the pickup sound."
+  - "&e/pmc support &8- &7Receive support for PhysicalMobCoins."
+  - "&8&l&m--------------------[&6&lPhysical&e&lMobCoins&8&l&m]--------------------"
