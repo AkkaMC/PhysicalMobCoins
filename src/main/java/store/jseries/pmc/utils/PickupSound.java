@@ -1,13 +1,14 @@
 package store.jseries.pmc.utils;
 
 import lombok.Getter;
+import store.jseries.pmc.utils.warse.Sound;
 import store.jseries.pmc.utils.warse.xseries.XMaterial;
 
 public enum PickupSound {
 
-    NONE(null,null),
+    NONE(XMaterial.REDSTONE_BLOCK,null),
     EXPERIENCE_PICKUP(XMaterial.EXPERIENCE_BOTTLE, Sound.ORB_PICKUP),
-    PORTAL(XMaterial.NETHER_PORTAL, Sound.PORTAL),
+    PORTAL(XMaterial.OBSIDIAN, Sound.PORTAL),
     SLIME_ATTACK(XMaterial.SLIME_BALL, Sound.SLIME_ATTACK),
     SLIME_JUMP(XMaterial.SLIME_BLOCK, Sound.SLIME_WALK),
     CHICKEN_PLOP(XMaterial.EGG, Sound.CHICKEN_EGG_POP),

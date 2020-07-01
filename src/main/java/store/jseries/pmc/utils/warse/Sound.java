@@ -1,4 +1,4 @@
-package store.jseries.pmc.utils;
+package store.jseries.pmc.utils.warse;
 
 /**
  * Version independent spigot sounds.

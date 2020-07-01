@@ -23,7 +23,6 @@ public enum Message {
 
     private String configId;
     private boolean multiline;
-    private FileConfiguration file;
     @Getter
     @Setter
     private static FileConfiguration config;
@@ -31,7 +30,6 @@ public enum Message {
     Message(String id) {
         if(Message.getConfig()==null)
             Message.setConfig(YamlConfiguration.loadConfiguration(new File(PhysicalMobCoins.getInstance().getDataFolder(),"messages.yml")));
-        file = Message.getConfig();
         this.configId = id;
         this.multiline = false;
     }
@@ -39,7 +37,6 @@ public enum Message {
     Message(String id, boolean multi) {
         if(Message.getConfig()==null)
             Message.setConfig(YamlConfiguration.loadConfiguration(new File(PhysicalMobCoins.getInstance().getDataFolder(),"messages.yml")));
-        file = Message.getConfig();
         this.configId = id;
         this.multiline = multi;
     }
@@ -51,11 +48,11 @@ public enum Message {
     public List<String> getMessage(boolean multiline) {
         if (!multiline) {
             if (this == PREFIX || this == SUFFIX)
-                return Collections.singletonList(ChatColor.translateAlternateColorCodes('&', file.getString(configId)));
-            return Collections.singletonList(ChatColor.translateAlternateColorCodes('&', PREFIX.getMessage() + file.getString(configId) + SUFFIX.getMessage()));
+                return Collections.singletonList(ChatColor.translateAlternateColorCodes('&', Message.getConfig().getString(configId)));
+            return Collections.singletonList(ChatColor.translateAlternateColorCodes('&', PREFIX.getMessage() + Message.getConfig().getString(configId) + SUFFIX.getMessage()));
         } else {
             List<String> message = new ArrayList<>();
-            for(String s : file.getStringList(configId))
+            for(String s : Message.getConfig().getStringList(configId))
                 message.add(ChatColor.translateAlternateColorCodes('&',s));
             return message;
         }

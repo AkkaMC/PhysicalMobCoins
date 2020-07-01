@@ -20,7 +20,7 @@ public class CoinPickupListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onCoinPickup(CoinPickupEvent e) {
-        if(!e.isCancelled()) {
+        if(!e.isCancelled() && e.getCoinAmount() > 0) {
             PhysicalMobCoins.getInstance().getCurrencySupport().giveCoins(e.getPlayer().getUniqueId(), e.getCoinAmount());
             e.getItem().remove();
             PhysicalMobCoins.getInstance().getSoundManager().playSound(e.getPlayer());

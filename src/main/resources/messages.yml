@@ -10,4 +10,5 @@ help-message:
   - "&e/pmc setitem (item_name) &8- &7Set the mobcoin item."
   - "&e/pmc setsound (sound_name) &8- &7Set the pickup sound."
   - "&e/pmc support &8- &7Receive support for PhysicalMobCoins."
+  - "&e/pmc reload &8- &7Reload the messages.yml file."
   - "&8&l&m--------------------[&6&lPhysical&e&lMobCoins&8&l&m]--------------------"

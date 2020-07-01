@@ -3,9 +3,8 @@ package store.jseries.pmc;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import store.jseries.pmc.listeners.CoinPickupListener;
-import store.jseries.pmc.listeners.InventoryClickListener;
-import store.jseries.pmc.listeners.PlayerPickupItemListener;
+import store.jseries.pmc.commands.MainCommand;
+import store.jseries.pmc.listeners.*;
 import store.jseries.pmc.managers.CoinManager;
 import store.jseries.pmc.managers.InventoryManager;
 import store.jseries.pmc.managers.SoundManager;
@@ -41,9 +40,10 @@ public class PhysicalMobCoins extends JavaPlugin {
         InventoryManager.init();
 
         getServer().getPluginManager().registerEvents(new CoinPickupListener(),this);
-        getServer().getPluginManager().registerEvents(new PlayerPickupItemListener(),this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(),this);
+        getServer().getPluginManager().registerEvents(new InventoryPickupItemListener(),this);
 
+        getCommand("pmc").setExecutor(new MainCommand());
 
         currencySupport = null;
         if(Bukkit.getPluginManager().getPlugin("SuperMobCoins") != null) {
