@@ -5,6 +5,7 @@ depend:
   - SuperMobCoins
 description: ${project.description}
 author: Jak3
+website: jseries.store
 api-version: '1.13'
 commands:
   pmc:

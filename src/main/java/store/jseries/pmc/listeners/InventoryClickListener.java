@@ -2,8 +2,10 @@ package store.jseries.pmc.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import store.jseries.pmc.PhysicalMobCoins;
 import store.jseries.pmc.managers.InventoryManager;
@@ -50,12 +52,16 @@ public class InventoryClickListener implements Listener {
                         else {
                             PickupSound sound = PhysicalMobCoins.getInstance().getSoundManager().soundFromSlot(e.getSlot());
                             if (sound != null) {
-                                if (sound == PhysicalMobCoins.getInstance().getSoundManager().getSound()) {
-                                    e.getWhoClicked().sendMessage(ChatColor.RED + "That is already selected.");
-                                    return;
+                                if(e.getClick() == ClickType.RIGHT || e.getClick() == ClickType.SHIFT_RIGHT) {
+                                    PhysicalMobCoins.getInstance().getSoundManager().playSound((Player) e.getWhoClicked(), sound);
+                                } else {
+                                    if (sound == PhysicalMobCoins.getInstance().getSoundManager().getSound()) {
+                                        e.getWhoClicked().sendMessage(ChatColor.RED + "That is already selected.");
+                                        return;
+                                    }
+                                    PhysicalMobCoins.getInstance().getSoundManager().setSound(sound);
+                                    e.getWhoClicked().openInventory(InventoryManager.getSounds());
                                 }
-                                PhysicalMobCoins.getInstance().getSoundManager().setSound(sound);
-                                e.getWhoClicked().openInventory(InventoryManager.getSounds());
                             }
                         }
                     }

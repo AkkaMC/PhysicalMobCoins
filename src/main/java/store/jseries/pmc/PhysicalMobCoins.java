@@ -56,7 +56,7 @@ public class PhysicalMobCoins extends JavaPlugin {
         if(currencySupport == null) {
             Logger.getLogger("minecraft").info("PhysicalMobCoins > Disabling.");
             Logger.getLogger("minecraft").info("PhysicalMobCoins > No support plugin found.");
-            Logger.getLogger("minecraft").info("PhysicalMobCoins > Must be SuperMobCoins/LemonMobCoins/PvPingMobCoins/CoralShards.");
+            Logger.getLogger("minecraft").info("PhysicalMobCoins > Must be SuperMobCoins.");
             this.getPluginLoader().disablePlugin(this);
         }
     }

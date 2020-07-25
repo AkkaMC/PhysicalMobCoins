@@ -10,6 +10,8 @@ pickup-sound-volume: 1
 pickup-sound-pitch: 1
 send-message-on-pickup: true
 
+disabled-worlds: []
+
 #The height the item should spawn at
 y-change-amount: 0.0
 

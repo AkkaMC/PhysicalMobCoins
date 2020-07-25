@@ -50,6 +50,11 @@ public class SoundManager {
             player.playSound(player.getLocation(), sound.getSound().bukkitSound(), defaultVolume, defaultPitch);
     }
 
+    public void playSound(Player player,PickupSound sound) {
+        if(sound != PickupSound.NONE)
+            player.playSound(player.getLocation(), sound.getSound().bukkitSound(), defaultVolume, defaultPitch);
+    }
+
     public PickupSound soundFromSlot(int slot) {
         if(!InventoryManager.getListSlots().contains(slot))
             return null;

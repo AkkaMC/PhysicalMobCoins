@@ -82,7 +82,7 @@ public class InventoryManager {
         sounds.setItem(34, new ItemStackBuilder(current.getIcon()).displayName("&e&lCurrent Sound").lore("&7" + current.toString().replaceAll("_"," ")).build());
         int id = 0;
         for(PickupSound sound : PickupSound.values()) {
-            sounds.setItem(listSlots.get(id), new ItemStackBuilder(sound.getIcon()).displayName("&e&l" + sound.toString().replaceAll("_"," ") + "&7 " + (sound == current ? "[Enabled]" : "[Disabled]")).lore("&7" + (sound == current ? "Click to disable." : "Click to enable.")).build());
+            sounds.setItem(listSlots.get(id), new ItemStackBuilder(sound.getIcon()).displayName("&e&l" + sound.toString().replaceAll("_"," ") + "&7 " + (sound == current ? "[Enabled]" : "[Disabled]")).lore("&7Right click to preview.", "&7" + (sound == current ? "Left click to disable." : "Left click to enable.")).build());
             id++;
         }
     }

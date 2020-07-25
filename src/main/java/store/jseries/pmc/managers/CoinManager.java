@@ -62,7 +62,7 @@ public class CoinManager {
         xDistance = config.contains("x-distance") ? config.getDouble("x-distance") : 1.0;
         yDistance = config.contains("y-distance") ? config.getDouble("y-distance") : 1.0;
         zDistance = config.contains("z-distance") ? config.getDouble("z-distance") : 1.0;
-        Bukkit.getScheduler().runTaskTimerAsynchronously(PhysicalMobCoins.getInstance(), new Runnable() {
+        Bukkit.getScheduler().runTaskTimer(PhysicalMobCoins.getInstance(), new Runnable() {
             @Override
             public void run() {
                 for(Player player : Bukkit.getOnlinePlayers()) {
