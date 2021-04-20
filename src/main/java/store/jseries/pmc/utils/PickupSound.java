@@ -16,8 +16,12 @@ public enum PickupSound {
     BURP(XMaterial.BREAD, Sound.BURP),
     ANVIL_LAND(XMaterial.ANVIL,Sound.ANVIL_LAND),
     SHOOT_ARROW(XMaterial.ARROW, Sound.SHOOT_ARROW),
-    CLICK(XMaterial.STONE_BUTTON, Sound.CLICK);
-
+    CLICK(XMaterial.STONE_BUTTON, Sound.CLICK),
+    DOOR_CLOSE(XMaterial.OAK_DOOR, Sound.DOOR_CLOSE),
+    HIT(XMaterial.DIAMOND_SWORD, Sound.SUCCESSFUL_HIT),
+    BLAZE_HIT(XMaterial.BLAZE_ROD, Sound.BLAZE_HIT),
+    FIRE(XMaterial.FLINT_AND_STEEL, Sound.FIRE),
+    CHEST_OPEN(XMaterial.CHEST, Sound.CHEST_OPEN);
 
     @Getter
     private XMaterial icon;

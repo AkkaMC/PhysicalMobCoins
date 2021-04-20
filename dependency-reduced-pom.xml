@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>store.jseries.pmc</groupId>
   <artifactId>PhysicalMobCoins</artifactId>
-  <version>1.10</version>
+  <version>1.16</version>
   <description>MobCoins to the next level.</description>
   <build>
     <resources>
@@ -172,6 +172,34 @@
       <version>1.15</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/deps/craftbukkit/1.15.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc...........</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.15.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/deps/craftbukkit/1.15.2.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc...........</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/deps/craftbukkit/1.16.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc...........</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/deps/craftbukkit/1.16.2.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc...........</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.4</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/deps/craftbukkit/1.16.4.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>me.swanis</groupId>
